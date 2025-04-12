@@ -11,9 +11,9 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 import java.util.stream.Stream;
 
-@Route("2-lazy-default-grid-details-default")
+@Route("2.1-lazy-data-provider-filtering")
 @Menu(order = 6, icon = LineAwesomeIconUrl.FREEBSD)
-public class MyClientView extends Div {
+public class MyClientView_filtering extends Div {
 
   public record MyClient(String name, int age) {}
 
@@ -46,7 +46,7 @@ public class MyClientView extends Div {
     }
   }
 
-  public MyClientView() {
+  public MyClientView_filtering() {
 
     Grid<MyClient> myClientGrid = new Grid<>();
     myClientGrid.addColumn(MyClient::name).setHeader("Nome");
@@ -62,6 +62,7 @@ public class MyClientView extends Div {
 
                      int offset = query.getOffset();
                      int limit = query.getLimit();
+
                      String queryNameFilter = query.getFilter().orElse(null);
 
                      return MyClientService
